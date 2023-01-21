@@ -20,12 +20,12 @@ def decode_rle(file):
         data = r_rle.read()
         # print(len(data))
         data = data.split('|')
-    with open(f'new_{file}', 'w', encoding = 'UTF-8') as a_rle:
+    with open(f'new_{file}', 'w', encoding = 'UTF-8') as w_rle:
         for item in data:
             if '^' in item:
                 item = item.split('^')
                 item = int(item[0]) * item[1][0] + item[1][1:]
-            a_rle.write(item)
+            w_rle.write(item)
     
 def main():
     encode_rle('test.txt')
