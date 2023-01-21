@@ -4,16 +4,16 @@
 def encode_rle(file):
     with open(file, 'r', encoding = 'UTF-8') as r_rle:
         data = r_rle.read()
-    with open(f'rle_{file}', 'w', encoding = 'UTF-8') as a_rle:
+    with open(f'rle_{file}', 'w', encoding = 'UTF-8') as w_rle:
         temp = ''
         length = 1
         for item in data:
             if item != temp:
-                a_rle.write(f'|{length}^{temp}' if length > 4 else temp * length)
+                w_rle.write(f'|{length}^{temp}' if length > 4 else temp * length)
                 temp = item
                 length = 1
             else: length += 1
-        a_rle.write(f'|{length}^{temp}' if length > 4 else temp * length)
+        w_rle.write(f'|{length}^{temp}' if length > 4 else temp * length)
                         
 def decode_rle(file):
     with open(file, 'r', encoding = 'UTF-8') as r_rle:
